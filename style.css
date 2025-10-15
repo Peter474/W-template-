@@ -1,0 +1,30 @@
+.hero-section {
+  background-image: url('https://source.unsplash.com/1600x900/?wedding,romantic');
+    background-size: cover;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, .special-font {
+  font-family: 'Great Vibes', cursive;
+}
+
+.mb-4{
+  font-family: 'Amiri', serif;
+ }
+ #countdown {
+  font-family: 'Poppins', sans-serif;
+  background-color: rgba(255, 192, 203, 0.2);
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: inline-block;
+}
+#countdown {
+  z-index: 20; 
+  position: relative; 
+}
+#home {
+  padding-top: 205px;
+  position: relative;
+}

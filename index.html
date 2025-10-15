@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex & Samira | Wedding (Template)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="android-chrome-192x192.png">
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-white shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
+      <div class="text-xl font-bold text-pink-600">A & S Wedding</div>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#home" class="text-gray-700 hover:text-pink-600 font-medium">Home</a>
+        <a href="#schedule" class="text-gray-700 hover:text-pink-600 font-medium">Schedule</a>
+        <a href="#guestbook" class="text-gray-700 hover:text-pink-600 font-medium">Guestbook</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden focus:outline-none text-gray-700 text-2xl">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Menu Box -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-100 shadow-md">
+      <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-pink-100">Home</a>
+      <a href="#schedule" class="block px-4 py-2 text-gray-700 hover:bg-pink-100">Schedule</a>
+      <a href="#guestbook" class="block px-4 py-2 text-gray-700 hover:bg-pink-100">Guestbook</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative w-full h-screen flex flex-col items-center justify-center text-white"
+           style="background-image: url('images/wedding1.jpg'); background-size: cover; background-position: center;">
+    <div id="overlay" class="absolute inset-0 bg-black opacity-50 z-10"></div>
+    <div class="relative z-20 flex flex-col items-center justify-center text-center px-4">
+      <!-- Fake names for template; replace with real names before delivery -->
+      <h1 class="text-5xl font-bold ms-4">Alex & Samira</h1>
+      <p class="text-xl mb-2">We’re Getting Married</p>
+
+      <!-- Countdown placeholder -->
+      <div id="countdown" class="text-xl font-semibold bg-white/30 px-6 py-3 rounded-xl mt-4"></div>
+
+      <br>
+      <!-- Fake verse for template; replace as needed -->
+      <p class="mb-4">“Love never fails.” (1 Corinthians 13:8)</p>
+    </div>
+  </section>
+
+  <!-- Schedule + Guestbook Section -->
+  <section id="event-section" class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="border-2 border-gray-300 rounded-xl p-8">
+
+        <!-- Schedule Section -->
+        <div id="schedule" class="text-center mb-12">
+          <h2 class="text-4xl font-semibold text-center mb-6">📅 Schedule</h2>
+
+          <!-- Placeholder venue info: edit before use -->
+          <p class="text-gray-700 text-lg">📍 Venue: [Venue Name / Address]</p>
+          <p class="text-gray-700 text-lg mt-2">🕗 Time: 7:00 PM</p>
+          <p class="text-gray-700 text-lg mt-2">📆 Date: January 1, 2026</p>
+
+          <!-- Map iframe (example). Replace src with real map embed or remove if you don't want it. -->
+          <div class="mt-6">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0000000000005!2d31.2357!3d30.0444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458400000000000%3A0x0000000000000000!2sPlaceholder%20Location!5e0!3m2!1sen!2seg!4v0000000000000"
+              width="100%" height="300" style="border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <!-- Directions button: replace href with real Google Maps link -->
+          <div class="text-center mt-4">
+            <a href="#" id="open-map-btn"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-block bg-pink-600 text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-pink-700 transition">
+              🗺️ Open Location
+            </a>
+          </div>
+        </div>
+
+        <!-- Guestbook Section -->
+        <div id="guestbook" class="mt-12">
+          <h2 class="text-3xl font-semibold text-center mb-6">💌 Guestbook</h2>
+          <p class="text-center text-gray-600 mb-6">Leave a sweet message for Alex & Samira ✨</p>
+          <div class="flex justify-center">
+            <!-- Example embedded Google Form (placeholder). Replace with your form link. -->
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLExampleFormID/viewform?embedded=true"
+              width="100%" height="600" style="border-radius: 16px; border: none;">
+              Loading…
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p>© 2026 Alex & Samira Wedding. Made with ❤️ by Peter </p>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({behavior: "smooth"});
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (mobileMenu) mobileMenu.classList.add("hidden");
+      });
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (menuBtn) menuBtn.addEventListener("click", () => { if (mobileMenu) mobileMenu.classList.toggle("hidden"); });
+
+    // Background slider (uses images/wedding1.jpg, wedding2.jpg, wedding3.jpg)
+    document.addEventListener("DOMContentLoaded", function() {
+      const homeSection = document.getElementById('home');
+      const backgrounds = [
+        "url('pexels-misha-earle-366060-1777843.jpg')",
+        "url('pexels-misha-earle-366060-1777843.jpg')",
+     
+      ];
+      let currentBg = 0;
+      function changeBackground() {
+        if (!homeSection) return;
+        homeSection.style.backgroundImage = backgrounds[currentBg];
+        homeSection.style.backgroundSize = "cover";
+        homeSection.style.backgroundPosition = "center";
+        currentBg = (currentBg + 1) % backgrounds.length;
+      }
+      changeBackground();
+      setInterval(changeBackground, 4500);
+
+      // Countdown
+      const countdownEl = document.getElementById("countdown");
+      // TEMPLATE WEDDING DATE (edit before delivery)
+      const weddingDate = new Date("January 01, 2026 19:00:00").getTime();
+
+      function updateCountdown() {
+        if (!countdownEl) return;
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance < 0) {
+          // Replace this message with any text or HTML you like
+          countdownEl.innerHTML = "💖 Today is the day! 💖";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000*60*60*24));
+        const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+        countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
+
+  </script>
+</body>
+</html>
