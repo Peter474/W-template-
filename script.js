@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ────────────────────────────────────
      5. COUNTDOWN
   ──────────────────────────────────── */
-  var weddingDate = new Date('January 01, 2026 19:00:00').getTime();
+  var weddingDate = new Date('January 01, 2027 19:00:00').getTime();
 
   function updateCountdown() {
     var el = document.getElementById('countdown');
