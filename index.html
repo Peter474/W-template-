@@ -3,194 +3,317 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex & Samira | Wedding (Template)</title>
+  <title>Alex & Samira | Wedding</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="android-chrome-192x192.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400;500&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
 </head>
+<body>
 
-<body class="bg-gray-100">
+  <!-- Floating Petals -->
+  <div class="petal-container" id="petals"></div>
+
+  <!-- Toast -->
+  <div id="toast">📋 Address copied!</div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="Wedding photo" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </div>
 
   <!-- Navbar -->
-  <nav class="fixed w-full bg-white shadow-md z-50">
-    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
-      <div class="text-xl font-bold text-pink-600">A & S Wedding</div>
-      <div class="space-x-6 hidden md:flex">
-        <a href="#home" class="text-gray-700 hover:text-pink-600 font-medium">Home</a>
-        <a href="#schedule" class="text-gray-700 hover:text-pink-600 font-medium">Schedule</a>
-        <a href="#guestbook" class="text-gray-700 hover:text-pink-600 font-medium">Guestbook</a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden focus:outline-none text-gray-700 text-2xl">
-        ☰
-      </button>
+  <nav id="navbar">
+    <div class="nav-logo">A &amp; S</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#guestbook">Guestbook</a>
     </div>
-
-    <!-- Mobile Menu Box -->
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-100 shadow-md">
-      <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-pink-100">Home</a>
-      <a href="#schedule" class="block px-4 py-2 text-gray-700 hover:bg-pink-100">Schedule</a>
-      <a href="#guestbook" class="block px-4 py-2 text-gray-700 hover:bg-pink-100">Guestbook</a>
-    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="relative w-full h-screen flex flex-col items-center justify-center text-white"
-           style="background-image: url('images/wedding1.jpg'); background-size: cover; background-position: center;">
-    <div id="overlay" class="absolute inset-0 bg-black opacity-50 z-10"></div>
-    <div class="relative z-20 flex flex-col items-center justify-center text-center px-4">
-      <!-- Fake names for template; replace with real names before delivery -->
-      <h1 class="text-5xl font-bold ms-4">Alex & Samira</h1>
-      <p class="text-xl mb-2">We’re Getting Married</p>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#story">Our Story</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#guestbook">Guestbook</a>
+  </div>
 
-      <!-- Countdown placeholder -->
-      <div id="countdown" class="text-xl font-semibold bg-white/30 px-6 py-3 rounded-xl mt-4"></div>
-
-      <br>
-      <!-- Fake verse for template; replace as needed -->
-      <p class="mb-4">“Love never fails.” (1 Corinthians 13:8)</p>
+  <!-- Hero -->
+  <section id="home">
+    <div class="hero-bg">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">We are getting married</p>
+      <h1 class="hero-names">Alex <span class="hero-ampersand">&amp;</span> Samira</h1>
+      <div class="hero-divider"><span class="hero-divider-icon">&#10022;</span></div>
+      <p class="hero-subtitle">January 1, 2026</p>
+      <p class="hero-verse">"Love never fails." &mdash; 1 Corinthians 13:8</p>
+      <div id="countdown"></div>
+    </div>
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
     </div>
   </section>
 
-  <!-- Schedule + Guestbook Section -->
-  <section id="event-section" class="py-12 bg-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="border-2 border-gray-300 rounded-xl p-8">
-<!-- Schedule Section -->
-<div id="schedule" class="text-center mb-12">
-  <h2 class="text-4xl font-semibold text-center mb-6">📅 Schedule</h2>
+  <!-- Our Story -->
+  <section id="story">
+    <div class="story-inner">
+      <p class="section-label reveal">Our Journey</p>
+      <h2 class="section-title reveal delay-1">A Love Story</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <span class="story-hearts reveal delay-3">&#127800;</span>
+      <p class="story-text reveal delay-3">
+        Two hearts, one destiny. From the very first moment we met, we knew something extraordinary had begun. Through laughter, adventures, quiet evenings, and dreams shared under the stars — our love has grown into something beautiful and forever.
+      </p>
+      <p class="story-text reveal" style="transition-delay:.4s;margin-top:1rem">
+        Now, we invite you — our beloved family and friends — to witness as we begin our greatest adventure yet: a lifetime together.
+      </p>
+      <span class="story-hearts reveal" style="transition-delay:.5s">&#128155;</span>
+    </div>
+  </section>
 
-  <p class="text-gray-700 text-lg">📍 Venue: [Venue Name / Address]</p>
-  <p class="text-gray-700 text-lg mt-2">🕗 Time: 7:00 PM</p>
-  <p class="text-gray-700 text-lg mt-2">📆 Date: January 1, 2026</p>
-
-  <!-- Map iframe (example). Replace src with real map embed -->
-  <div class="mt-6">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0000000000005!2d31.2357!3d30.0444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458400000000000%3A0x0000000000000000!2sPlaceholder%20Location!5e0!3m2!1sen!2seg!4v0000000000000"
-      width="100%" height="300" style="border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-
-  <!-- Google Calendar Button -->
-  <div class="text-center mt-6">
-    <a 
-      href="https://www.google.com/calendar/render?action=TEMPLATE&text=Alex+%26+Samira+Wedding&dates=20260101T190000Z/20260101T200000Z&details=Join+us+for+the+wedding+celebration+of+Alex+%26+Samira!&location=[Venue+Name+%2F+Address]&sf=true&output=xml"
-      target="_blank" rel="noopener noreferrer"
-      class="inline-block bg-pink-600 text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-pink-700 transition">
-      📆 Add to Google Calendar
-    </a>
-  </div>
-
-  <!-- Directions button -->
-  <div class="text-center mt-4">
-    <a href="#" id="open-map-btn"
-       target="_blank" rel="noopener noreferrer"
-       class="inline-block bg-pink-600 text-white font-me
-
-
-          <!-- Directions button: replace href with real Google Maps link -->
-          <div class="text-center mt-4">
-            <a href="#" id="open-map-btn"
-               target="_blank" rel="noopener noreferrer"
-               class="inline-block bg-pink-600 text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-pink-700 transition">
-              🗺️ Open Location
-            </a>
-          </div>
+  <!-- Timeline -->
+  <section id="timeline">
+    <div class="text-center">
+      <p class="section-label reveal">The milestones</p>
+      <h2 class="section-title reveal delay-1">How We Got Here</h2>
+      <div class="section-divider reveal delay-2"></div>
+    </div>
+    <div class="timeline-wrap reveal delay-3">
+      <div class="timeline-line"></div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-event">We first met — and the world changed &#10024;</div>
         </div>
-
-        <!-- Guestbook Section -->
-        <div id="guestbook" class="mt-12">
-          <h2 class="text-3xl font-semibold text-center mb-6">💌 Guestbook</h2>
-          <p class="text-center text-gray-600 mb-6">Leave a sweet message for Alex & Samira ✨</p>
-          <div class="flex justify-center">
-            <!-- Example embedded Google Form (placeholder). Replace with your form link. -->
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLExampleFormID/viewform?embedded=true"
-              width="100%" height="600" style="border-radius: 16px; border: none;">
-              Loading…
-            </iframe>
-          </div>
-        </div>
-
       </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-event">First trip together — adventures began &#127757;</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-event">He got down on one knee — she said yes &#128141;</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-event">Forever begins &#128586;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="text-center">
+      <p class="section-label reveal">Captured moments</p>
+      <h2 class="section-title reveal delay-1">Our Photos Together</h2>
+      <div class="section-divider reveal delay-2" style="background:rgba(201,168,76,0.4)"></div>
+      <p class="gallery-subtitle reveal delay-3">A glimpse of our journey — click any photo to view &#10024;</p>
+    </div>
+
+    <div class="gallery-filters reveal delay-3">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="moments">Moments</button>
+      <button class="filter-btn" data-filter="travels">Travels</button>
+      <button class="filter-btn" data-filter="engagement">Engagement</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item" data-category="engagement" data-index="0"
+           data-src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=90"
+           data-caption="The proposal 💍">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Engagement photo" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">The proposal &#128141;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gallery-item--tall" data-category="moments" data-index="1"
+           data-src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&q=90"
+           data-caption="Just us 🌸">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80" alt="Couple moment" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Just us &#127800;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="travels" data-index="2"
+           data-src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=1200&q=90"
+           data-caption="Our first trip 🌍">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=600&q=80" alt="Travel together" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Our first trip &#127757;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gallery-item--wide" data-category="engagement" data-index="3"
+           data-src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1400&q=90"
+           data-caption="Engagement shoot 💛">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=900&q=80" alt="Engagement shoot" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Engagement shoot &#128155;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="moments" data-index="4"
+           data-src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=90"
+           data-caption="Happiest days ☀️">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Happy moment" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Happiest days &#9728;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gallery-item--tall" data-category="travels" data-index="5"
+           data-src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1200&q=90"
+           data-caption="Adventures ✈️">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80" alt="Adventures" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Adventures &#9992;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="moments" data-index="6"
+           data-src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=90"
+           data-caption="In bloom 🌺">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80" alt="Flowers and love" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">In bloom &#127802;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="engagement" data-index="7"
+           data-src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&q=90"
+           data-caption="Soon to be 💫">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&q=80" alt="Engaged couple" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Soon to be &#128171;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item gallery-item--wide" data-category="travels" data-index="8"
+           data-src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1400&q=90"
+           data-caption="Golden hour 🌅">
+        <div class="gallery-img-wrap">
+          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=900&q=80" alt="Sunset together" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-zoom">&#128269;</span>
+            <span class="gallery-caption-text">Golden hour &#127749;</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule">
+    <div class="text-center">
+      <p class="section-label reveal">Mark your calendar</p>
+      <h2 class="section-title reveal delay-1">The Celebration</h2>
+      <div class="section-divider reveal delay-2" style="background:rgba(201,168,76,0.4)"></div>
+    </div>
+    <div class="schedule-card reveal delay-3">
+      <div class="schedule-header">
+        <div class="schedule-date">January 1, 2026</div>
+        <div class="schedule-time">&#128566; Doors open at 7:00 PM</div>
+        <div class="schedule-venue">&#128205; [Venue Name / Address]</div>
+      </div>
+      <div class="schedule-actions">
+        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Alex+%26+Samira+Wedding&dates=20260101T190000Z/20260101T230000Z&details=Join+us!&location=[Venue]"
+           target="_blank" rel="noopener" class="btn-gold btn-gold-fill">
+          &#128198; Add to Calendar
+        </a>
+        <a href="#" id="open-map-btn" target="_blank" rel="noopener" class="btn-gold">
+          &#128506; Get Directions
+        </a>
+        <button class="btn-gold" onclick="copyVenue()">&#128203; Copy Address</button>
+      </div>
+      <div class="schedule-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.987!2d31.2357!3d30.0444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAyJzM5LjgiTiAzMcKwMTQnMDguNiJF!5e0!3m2!1sen!2seg!4v1"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Venue map">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guestbook -->
+  <section id="guestbook">
+    <div class="text-center">
+      <p class="section-label reveal">Leave us a note</p>
+      <h2 class="section-title reveal delay-1">Guestbook</h2>
+      <div class="section-divider reveal delay-2"></div>
+      <p class="reveal delay-3" style="color:#7a5555;font-size:.95rem;font-style:italic;margin-top:-.5rem">
+        Leave a sweet message for Alex &amp; Samira &#10024;
+      </p>
+    </div>
+    <div class="guestbook-inner reveal delay-3">
+      <iframe class="guestbook-iframe"
+        src="https://docs.google.com/forms/d/e/1FAIpQLExampleFormID/viewform?embedded=true"
+        title="Wedding Guestbook">Loading…</iframe>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    <p>© 2026 Alex & Samira Wedding. Made with ❤️ by Peter </p>
+  <footer>
+    <span class="footer-names">Alex &amp; Samira</span>
+    <p class="footer-sub">January 1, 2026 &middot; Together forever</p>
+    <div class="footer-hearts">&#128155; &#127800; &#128155;</div>
+    <p class="footer-credit">Made with &#10084;&#65039; by Peter</p>
   </footer>
 
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({behavior: "smooth"});
-        const mobileMenu = document.getElementById("mobile-menu");
-        if (mobileMenu) mobileMenu.classList.add("hidden");
-      });
-    });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (menuBtn) menuBtn.addEventListener("click", () => { if (mobileMenu) mobileMenu.classList.toggle("hidden"); });
-
-    // Background slider (uses images/wedding1.jpg, wedding2.jpg, wedding3.jpg)
-    document.addEventListener("DOMContentLoaded", function() {
-      const homeSection = document.getElementById('home');
-      const backgrounds = [
-        "url('HD-wallpaper-wedding-couple-couple-love-people.jpg')",
-        "url('pexels-goumbik-574011.jpg')",
-     
-      ];
-      let currentBg = 0;
-      function changeBackground() {
-        if (!homeSection) return;
-        homeSection.style.backgroundImage = backgrounds[currentBg];
-        homeSection.style.backgroundSize = "cover";
-        homeSection.style.backgroundPosition = "center";
-        currentBg = (currentBg + 1) % backgrounds.length;
-      }
-      changeBackground();
-      setInterval(changeBackground, 4500);
-
-      // Countdown
-      const countdownEl = document.getElementById("countdown");
-      // TEMPLATE WEDDING DATE (edit before delivery)
-      const weddingDate = new Date("January 01, 2026 19:00:00").getTime();
-
-      function updateCountdown() {
-        if (!countdownEl) return;
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
-
-        if (distance < 0) {
-          // Replace this message with any text or HTML you like
-          countdownEl.innerHTML = "💖 Today is the day! 💖";
-          return;
-        }
-
-        const days = Math.floor(distance / (1000*60*60*24));
-        const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-        const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-        const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-        countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    });
-
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
